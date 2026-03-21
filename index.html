@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIBS UAE | SEO in Dubai & IT Services Company</title>
+    <meta name="description" content="SEO in Dubai, Digital Media, AIBS, IT Services company. Website developed by Kreative Minds (https://kreativeminds.ae). Social Media Services by KM Marketing and PR, Dubai, UAE.">
+    <meta name="keywords" content="SEO in Dubai, Digital Media, AIBS, IT Services, Kreative Minds, KM Marketing and PR, Dubai UAE">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        /* Interactive Background Elements */
+        .floating-icon {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+            font-size: 2rem;
+        }
+
+        .floating-icon-high {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.6;
+            animation: float 25s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(80px, 40px) rotate(90deg); }
+            50% { transform: translate(40px, 120px) rotate(180deg); }
+            75% { transform: translate(-40px, 40px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Hero Image Tilt & Animation */
+        .hero-image-container {
+            perspective: 1000px;
+        }
+        .hero-image-tilt {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: rotateY(-8deg) rotateX(5deg);
+        }
+        .hero-image-container:hover .hero-image-tilt {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Logo Slider Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+        .logo-slide {
+            flex-shrink: 0;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+        }
+        .logo-slide img, .logo-slide .dummy-logo {
+            max-height: 40px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .logo-slide:hover img, .logo-slide:hover .dummy-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .section-compact { padding-top: 20px; padding-bottom: 20px; }
+
+        /* Dynamic Header styles */
+        nav.scrolled {
+            height: 60px !important;
+            background-color: rgba(10, 17, 40, 0.95);
+        }
+        nav.scrolled .nav-container {
+            height: 60px !important;
+        }
+
+        .google-icon {
+            font-weight: 900;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Hero Interactive BG Icons -->
+    <div class="floating-icon" style="top: 15%; left: 5%;">📈</div>
+    <div class="floating-icon" style="top: 40%; right: 10%; animation-delay: -5s;">🚀</div>
+    <div class="floating-icon" style="bottom: 20%; left: 15%; animation-delay: -10s;">📊</div>
+    <div class="floating-icon" style="top: 70%; right: 5%; animation-delay: -15s;">💻</div>
+    <div class="floating-icon" style="top: 25%; right: 30%; animation-delay: -8s;">🎯</div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 bg-[#0a1128] transition-all duration-300 h-20 border-b border-white/5">
+        <div class="nav-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center transition-all duration-300">
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no" alt="AIBS UAE Logo" class="rounded-full w-full h-full object-contain">
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">AIBS <span class="text-indigo-400">UAE</span></span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-slate-300 hover:text-white text-sm font-semibold transition-colors">Home</a>
+                <a href="#services" class="text-slate-300 hover:text-white text-sm font-semibold transition-colors">Services</a>
+                <a href="#about" class="text-slate-300 hover:text-white text-sm font-semibold transition-colors">About</a>
+                <a href="#contact" class="text-slate-300 hover:text-white text-sm font-semibold transition-colors">Contact</a>
+            </div>
+
+            <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-indigo-900/50">
+                Get A Quote
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-10 overflow-hidden section-compact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+                <div class="lg:w-[60%] text-center lg:text-left">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-bold tracking-wider uppercase mb-4">
+                        Premier SEO & IT Solutions
+                    </span>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                        <span class="text-indigo-700">Dubai</span>-based <span class="text-indigo-700">SEO</span> and <span class="text-indigo-700">IT Services</span> agency delivering measurable <span class="text-indigo-700">results</span>
+                    </h1>
+                    <p class="text-base text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                        Maximize your online impact with Dubai's leading SEO and IT services provider. We deliver custom strategies that turn digital presence into business growth.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#services" class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all text-sm text-center">
+                            Our Services
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-white border border-slate-200 text-slate-900 rounded-xl font-bold hover:bg-slate-50 transition-all text-sm flex items-center justify-center gap-2">
+                            Hire Us Today <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-[40%] hero-image-container">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white hero-image-tilt">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1851&auto=format&fit=crop" alt="Strategy Workflow" class="w-full object-cover aspect-square lg:aspect-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Block -->
+    <section class="py-10 bg-white border-y border-slate-50 section-compact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <h4 class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-2">Who We Are</h4>
+                    <p class="text-slate-700 text-sm leading-relaxed font-medium">
+                        We are a team of IT and Marketing experts with over 5 years of experience in SEO, IT Services and marketing to help businesses grow online.
+                    </p>
+                </div>
+                <div class="lg:col-span-1 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="p-1.5 bg-indigo-600 rounded-lg text-white"><i data-lucide="target" class="w-4 h-4"></i></div>
+                        <h4 class="font-bold text-slate-900">Mission</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Our mission is to empower our clients to use the internet to its full potential by providing affordable, effective, custom design, SEO and marketing solutions.
+                    </p>
+                </div>
+                <div class="lg:col-span-1 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="p-1.5 bg-indigo-600 rounded-lg text-white"><i data-lucide="eye" class="w-4 h-4"></i></div>
+                        <h4 class="font-bold text-slate-900">Vision</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Our vision is to become a global leader in providing the best and unique web design and marketing services to improve our client’s productivity and business strength.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (Expertise) Section -->
+    <section id="services" class="relative py-10 bg-slate-50 section-compact overflow-hidden">
+        <!-- Expertise Background Animated Icons (60% Opacity) -->
+        <div class="floating-icon-high text-4xl" style="top: 10%; left: 5%;">🔍</div>
+        <div class="floating-icon-high google-icon text-5xl" style="top: 50%; left: 15%; animation-delay: -7s;">G</div>
+        <div class="floating-icon-high text-4xl" style="top: 20%; right: 10%; animation-delay: -12s;">📈</div>
+        <div class="floating-icon-high text-3xl" style="bottom: 10%; right: 20%; animation-delay: -3s;">🌐</div>
+        <div class="floating-icon-high text-2xl" style="top: 70%; left: 40%; animation-delay: -18s;">💡</div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-slate-900">SEO & IT Expertise</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all">
+                    <i data-lucide="search" class="text-indigo-600 mb-4 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">SEO Solutions</h4>
+                    <p class="text-slate-600 text-sm">Targeted keywords and technical SEO to dominate Dubai's search landscape.</p>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all">
+                    <i data-lucide="terminal" class="text-purple-600 mb-4 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">IT Services</h4>
+                    <p class="text-slate-600 text-sm">Robust IT infrastructure, support, and custom software development.</p>
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all">
+                    <i data-lucide="trending-up" class="text-pink-600 mb-4 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Digital Growth</h4>
+                    <p class="text-slate-600 text-sm">Comprehensive marketing strategies for social and web visibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section / Who We Are -->
+    <section id="about" class="relative py-10 bg-white section-compact overflow-hidden">
+        
+        <!-- About Section Floating Icons -->
+        <div class="floating-icon text-4xl" style="top: 5%; right: 10%;">🏙️</div>
+        <div class="floating-icon text-3xl" style="bottom: 20%; left: 5%; animation-delay: -5s;">🏢</div>
+        <div class="floating-icon text-2xl" style="top: 50%; right: 15%; animation-delay: -10s;">🇦🇪</div>
+        <div class="floating-icon text-3xl" style="top: 80%; left: 20%; animation-delay: -15s;">📜</div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Who We Are</h3>
+                    <p class="text-slate-600 text-sm italic mb-4">
+                        "<a href="https://aibsuae.com" class="font-bold text-[#0a1128] hover:underline">Afzal Innovative Business Solutions LLC-FZ</a> a UAE based registered company."
+                    </p>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        Bridging the gap between technology and results. Our mission is to provide affordable yet world-class digital solutions for companies in Dubai and beyond.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="font-bold text-xs uppercase text-indigo-600">Established</h5>
+                            <p class="text-xl font-bold text-slate-900">2024</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="font-bold text-xs uppercase text-indigo-600">Experience</h5>
+                            <p class="text-xl font-bold text-slate-900">5+ Years</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 bg-slate-50/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-100">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4"><i data-lucide="check-circle" class="text-indigo-600 w-5 h-5"></i><span class="text-sm font-medium">Expertise in Dubai SEO Market</span></div>
+                        <div class="flex items-center gap-4"><i data-lucide="check-circle" class="text-indigo-600 w-5 h-5"></i><span class="text-sm font-medium">Innovative IT Infrastructures</span></div>
+                        <div class="flex items-center gap-4"><i data-lucide="check-circle" class="text-indigo-600 w-5 h-5"></i><span class="text-sm font-medium">Transparent Reporting & Pricing</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Slider -->
+    <section class="relative py-10 bg-white border-y border-slate-100 overflow-hidden section-compact">
+        
+        <!-- Partners Section Floating Icons -->
+        <div class="floating-icon text-xl" style="top: 10%; left: 10%; opacity: 0.2;">✨</div>
+        <div class="floating-icon text-2xl" style="bottom: 10%; right: 10%; opacity: 0.2; animation-delay: -8s;">🤝</div>
+        
+        <div class="max-w-7xl mx-auto px-4 mb-4 relative z-10">
+            <h3 class="text-center text-slate-400 font-bold uppercase tracking-widest text-[10px]">Partners we have worked with</h3>
+        </div>
+        <div class="relative z-10">
+            <div class="logo-track">
+                <a href="https://kreativeminds.ae" target="_blank" class="logo-slide">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJqYMqGFi8_YguBiuUMcv2IJLpml4olsmabJTwtaEO8o0ll7w0=s576-c-no" alt="Kreative Minds">
+                </a>
+                <a href="https://dastaanworld.com/" target="_blank" class="logo-slide">
+                    <img src="https://dastaanworld.com/wp-content/uploads/2025/02/DL_white.png" alt="Dastaan World" class="bg-slate-800 p-2 rounded">
+                </a>
+                <a href="https://naseershahllc.com/" target="_blank" class="logo-slide">
+                    <img src="https://i.ibb.co/s9gPpJh3/NTC-logo1.png" alt="Naseer Shah LLC">
+                </a>
+                <a href="https://lincglobalhub.com" target="_blank" class="logo-slide">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJj07KpZsGRinSMWgXBXv1tPHmIMc3w5dO73Gc-q8w9Hj7kVqY=s576-c-no" alt="LINC GLOBAL Hub">
+                </a>
+                <div class="logo-slide">
+                    <div class="dummy-logo flex items-center gap-1 font-bold text-slate-400">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span>SupplySavvy <span class="text-[10px]">LLC</span></span>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless animation -->
+                <a href="https://kreativeminds.ae" target="_blank" class="logo-slide"><img src="https://lh3.googleusercontent.com/a/ACg8ocJqYMqGFi8_YguBiuUMcv2IJLpml4olsmabJTwtaEO8o0ll7w0=s576-c-no"></a>
+                <a href="https://dastaanworld.com/" target="_blank" class="logo-slide"><img src="https://dastaanworld.com/wp-content/uploads/2025/02/DL_white.png" class="bg-slate-800 p-2 rounded"></a>
+                <a href="https://naseershahllc.com/" target="_blank" class="logo-slide"><img src="https://i.ibb.co/s9gPpJh3/NTC-logo1.png"></a>
+                <a href="https://lincglobalhub.com" target="_blank" class="logo-slide"><img src="https://lh3.googleusercontent.com/a/ACg8ocJj07KpZsGRinSMWgXBXv1tPHmIMc3w5dO73Gc-q8w9Hj7kVqY=s576-c-no"></a>
+                <div class="logo-slide"><div class="dummy-logo flex items-center gap-1 font-bold text-slate-400"><i data-lucide="shopping-bag" class="w-5 h-5"></i><span>SupplySavvy <span class="text-[10px]">LLC</span></span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-10 bg-indigo-900 section-compact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div class="text-white">
+                    <h2 class="text-3xl font-bold mb-4">Let's Build Your Digital Future</h2>
+                    <p class="text-indigo-200 mb-8 text-sm">We are ready to raise your business to new heights. Contact us today for a free evaluation.</p>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-3"><i data-lucide="map-pin" class="text-indigo-300 w-4 h-4"></i><span>Meydan Freezone, Dubai UAE</span></div>
+                        <div class="flex items-center gap-3"><i data-lucide="mail" class="text-indigo-300 w-4 h-4"></i><span>info@aibsuae.com</span></div>
+                        <div class="flex items-center gap-3"><i data-lucide="phone" class="text-indigo-300 w-4 h-4"></i><span>+971 54 3528562</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">Get A Free Quote</h3>
+                    <form id="quoteForm" class="space-y-4">
+                        <input type="text" id="senderName" placeholder="Your Name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-100 outline-none">
+                        <input type="email" id="senderEmail" placeholder="Your Email Address" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-100 outline-none">
+                        <select id="serviceType" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm outline-none appearance-none cursor-pointer">
+                            <option>SEO Services</option>
+                            <option>IT Services</option>
+                            <option>Digital Marketing</option>
+                            <option>Custom Development</option>
+                        </select>
+                        <textarea id="senderMsg" placeholder="Tell us about your project" rows="3" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-100 outline-none"></textarea>
+                        <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold text-sm hover:bg-indigo-700 transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refined Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-white/5 text-[12px]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+                <!-- Left: Copyright -->
+                <div class="text-center md:text-left">
+                    Copyright © 2024 - 2026 AIBS
+                </div>
+                
+                <!-- Center: Logo & Name -->
+                <div class="flex items-center justify-center gap-2">
+                    <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center p-0.5 shadow-sm">
+                        <img src="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no" class="rounded-full w-full h-full object-contain">
+                    </div>
+                    <span class="text-white font-bold tracking-tight">AIBS <span class="text-indigo-400">UAE</span></span>
+                </div>
+                
+                <!-- Right: Attribution -->
+                <div class="text-center md:text-right">
+                    Designed by <a href="https://kreativeminds.ae" target="_blank" class="text-indigo-400 hover:text-white transition-colors">Kreative Minds</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Navbar Scroll Logic
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.querySelector('.nav-container');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navContainer.classList.add('h-[60px]');
+                navContainer.classList.remove('h-20');
+            } else {
+                navbar.classList.remove('scrolled');
+                navContainer.classList.remove('h-[60px]');
+                navContainer.classList.add('h-20');
+            }
+        });
+
+        // Form Handling
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const service = document.getElementById('serviceType').value;
+            const message = document.getElementById('senderMsg').value;
+            
+            const subject = encodeURIComponent(`Quote Request: ${service} from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`);
+            
+            window.location.href = `mailto:aibsuae@gmail.com?subject=${subject}&body=${body}`;
+        });
+    </script>
+</body>
+</html>
