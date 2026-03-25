@@ -35,6 +35,43 @@
             color: #94a3b8;
             font-style: italic;
         }
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+        .toggle-slider:before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #6366f1;
+        }
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen">
@@ -173,9 +210,23 @@
 
             <!-- Totals -->
             <div class="flex justify-end mb-8">
-                <div class="w-full sm:w-72 space-y-2">
+                <div class="w-full sm:w-80 space-y-2">
+                    <!-- VAT Included / Excluded Toggle -->
+                    <div class="flex items-center justify-between text-sm mb-3 pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-500 font-medium">Prices are</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="vatExclLabel" class="text-xs font-semibold text-slate-400">Excl. VAT</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="vatIncluded" onchange="calculate()">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span id="vatInclLabel" class="text-xs font-semibold text-indigo-600">Incl. VAT</span>
+                        </div>
+                    </div>
                     <div class="flex justify-between text-sm">
-                        <span class="text-slate-500">Subtotal</span>
+                        <span class="text-slate-500" id="subtotalLabel">Subtotal</span>
                         <span class="font-semibold" id="subtotal">0.00</span>
                     </div>
                     <div class="flex justify-between text-sm items-center">
@@ -262,22 +313,51 @@
 
         function calculate() {
             const rows = document.querySelectorAll('.line-item');
-            let subtotal = 0;
+            let lineTotal = 0;
             const cur = document.getElementById('currency').value;
+            const vatIncluded = document.getElementById('vatIncluded').checked;
+            const vatRate = parseFloat(document.getElementById('vatRate').value) || 0;
+            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
 
+            // Update toggle label styling
+            const exclLabel = document.getElementById('vatExclLabel');
+            const inclLabel = document.getElementById('vatInclLabel');
+            const subtotalLabel = document.getElementById('subtotalLabel');
+
+            if (vatIncluded) {
+                exclLabel.className = 'text-xs font-semibold text-slate-400';
+                inclLabel.className = 'text-xs font-semibold text-indigo-600';
+                subtotalLabel.textContent = 'Subtotal (excl. VAT)';
+            } else {
+                exclLabel.className = 'text-xs font-semibold text-indigo-600';
+                inclLabel.className = 'text-xs font-semibold text-slate-400';
+                subtotalLabel.textContent = 'Subtotal';
+            }
+
+            // Calculate line item totals
             rows.forEach(row => {
                 const inputs = row.querySelectorAll('input[type="number"]');
                 const qty = parseFloat(inputs[0].value) || 0;
                 const rate = parseFloat(inputs[1].value) || 0;
                 const amount = qty * rate;
                 row.querySelector('.item-amount').textContent = amount.toFixed(2);
-                subtotal += amount;
+                lineTotal += amount;
             });
 
-            const vatRate = parseFloat(document.getElementById('vatRate').value) || 0;
-            const vatAmount = subtotal * (vatRate / 100);
-            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
-            const total = subtotal + vatAmount - discount;
+            let subtotal, vatAmount, total;
+
+            if (vatIncluded) {
+                // Prices include VAT: back-calculate
+                // lineTotal = subtotal + vatAmount = subtotal * (1 + vatRate/100)
+                subtotal = lineTotal / (1 + vatRate / 100);
+                vatAmount = lineTotal - subtotal;
+                total = lineTotal - discount;
+            } else {
+                // Prices exclude VAT: add VAT on top
+                subtotal = lineTotal;
+                vatAmount = subtotal * (vatRate / 100);
+                total = subtotal + vatAmount - discount;
+            }
 
             document.getElementById('subtotal').textContent = cur + ' ' + subtotal.toFixed(2);
             document.getElementById('vatAmount').textContent = cur + ' ' + vatAmount.toFixed(2);
@@ -298,6 +378,7 @@
                 document.getElementById('paymentInfo').value = '';
                 document.getElementById('discountAmount').value = '0';
                 document.getElementById('vatRate').value = '5';
+                document.getElementById('vatIncluded').checked = false;
 
                 const tbody = document.getElementById('lineItems');
                 tbody.innerHTML = `
