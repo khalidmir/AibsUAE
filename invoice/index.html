@@ -1,30 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice | AIBS UAE</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f1f5f9;
+        }
+        @media print {
+            body { background: white; }
+            .no-print { display: none !important; }
+            .print-area { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+            @page { margin: 0.5in; }
+        }
+        .invoice-input {
+            background: transparent;
+            border-bottom: 1px dashed #cbd5e1;
+            outline: none;
+            padding: 2px 4px;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+        .invoice-input:focus {
+            border-bottom-color: #6366f1;
+        }
+        .invoice-input::placeholder {
+            color: #94a3b8;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen">
 
+    <!-- Top Navigation Bar -->
+    <nav class="w-full bg-[#0a1128] h-16 flex items-center px-6 no-print">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <a href="https://aibsuae.com" class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-white rounded-full flex items-center justify-center p-0.5 shadow-md">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no" alt="AIBS UAE Logo" class="rounded-full w-full h-full object-contain">
+                </div>
+                <span class="text-lg font-bold tracking-tight text-white">AIBS <span class="text-indigo-400">UAE</span></span>
+            </a>
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                    <i data-lucide="printer" class="w-4 h-4"></i> Print / PDF
+                </button>
+                <button onclick="resetInvoice()" class="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+                </button>
+            </div>
+        </div>
+    </nav>
 
-Continue on emiratesinsight.com WordPress admin.
+    <!-- Invoice Container -->
+    <div class="max-w-4xl mx-auto my-8 no-print px-4">
+        <p class="text-center text-slate-500 text-sm mb-4">Fill in the details below and click <strong>Print / PDF</strong> to generate your invoice.</p>
+    </div>
 
-• Delete all posts created by automatic plugins or sourced from third-party websites without editing
+    <div class="print-area max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12 mx-4 sm:mx-auto">
 
-Do NOT delete (exceptions):
+        <!-- Invoice Header -->
+        <div class="bg-[#0a1128] text-white p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center p-1 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJy0vxOhC63VEAOU4mtdZYzkuxBSj7BXozpsHrCuRc5GaG9xHQ=s576-c-no" alt="AIBS UAE" class="rounded-full w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">AIBS <span class="text-indigo-400">UAE</span></h1>
+                    <p class="text-indigo-300 text-xs font-medium">Afzal Innovative Business Solutions LLC-FZ</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <h2 class="text-3xl font-extrabold tracking-tight">INVOICE</h2>
+                <div class="mt-2 text-sm text-indigo-200 space-y-1">
+                    <div class="flex items-center gap-2 justify-end">
+                        <span class="text-indigo-400 font-semibold">#</span>
+                        <input type="text" id="invoiceNumber" class="invoice-input text-white text-right bg-transparent border-b border-dashed border-indigo-400/40 w-32" placeholder="INV-001" value="INV-001">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-• Recently updated or rewritten latest 60 posts
-• Any posts published manually by admin or editor
-• All posts currently visible on the homepage
-• Posts containing keywords:
-Kreative Minds, KM Marketing and PR, Urdu AI, Khalidgraphy, Khalid Mir, Dubai Expo, Forex Expo, Crypto Expo, Dubai Event, World Leap, Gitex Dubai, Dubai Nomad Visa, Dubai Golden Visa, ecommerce, digital marketing
-• Any post with more than 25 views
+        <!-- Invoice Body -->
+        <div class="p-8">
 
-Category rule:
+            <!-- From / To / Dates Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+                <!-- From -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-indigo-600 tracking-widest mb-3">From</h4>
+                    <div class="space-y-1 text-sm">
+                        <p class="font-bold text-slate-900">Afzal Innovative Business Solutions LLC-FZ</p>
+                        <p class="text-slate-500">Meydan Freezone, Dubai, UAE</p>
+                        <p class="text-slate-500">info@aibsuae.com</p>
+                        <p class="text-slate-500">+971 54 352 8562</p>
+                        <p class="text-slate-500">TRN: <input type="text" class="invoice-input w-40 text-slate-500" id="trn" placeholder="Enter TRN"></p>
+                    </div>
+                </div>
+                <!-- To -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-indigo-600 tracking-widest mb-3">Bill To</h4>
+                    <div class="space-y-1 text-sm">
+                        <input type="text" class="invoice-input font-bold text-slate-900" id="clientName" placeholder="Client / Company Name">
+                        <input type="text" class="invoice-input text-slate-500" id="clientAddress" placeholder="Address">
+                        <input type="text" class="invoice-input text-slate-500" id="clientEmail" placeholder="Email">
+                        <input type="text" class="invoice-input text-slate-500" id="clientPhone" placeholder="Phone">
+                        <div class="flex items-center gap-1 text-slate-500">TRN: <input type="text" class="invoice-input w-36 text-slate-500" id="clientTrn" placeholder="Client TRN"></div>
+                    </div>
+                </div>
+                <!-- Dates -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-indigo-600 tracking-widest mb-3">Details</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500 font-medium">Date:</span>
+                            <input type="date" class="invoice-input w-36 text-right text-slate-700" id="invoiceDate">
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500 font-medium">Due Date:</span>
+                            <input type="date" class="invoice-input w-36 text-right text-slate-700" id="dueDate">
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500 font-medium">Currency:</span>
+                            <select id="currency" class="invoice-input w-36 text-right text-slate-700 cursor-pointer">
+                                <option value="AED">AED</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-• Each category must retain at least 3 posts
-• If needed, keep the most relevant and evergreen 3 posts
+            <!-- Line Items Table -->
+            <div class="border border-slate-200 rounded-xl overflow-hidden mb-6">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-600">
+                            <th class="text-left py-3 px-4 font-semibold text-xs uppercase tracking-wider">Description</th>
+                            <th class="text-center py-3 px-3 font-semibold text-xs uppercase tracking-wider w-20">Qty</th>
+                            <th class="text-right py-3 px-3 font-semibold text-xs uppercase tracking-wider w-28">Rate</th>
+                            <th class="text-right py-3 px-4 font-semibold text-xs uppercase tracking-wider w-28">Amount</th>
+                            <th class="w-10 no-print"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="lineItems">
+                        <tr class="border-t border-slate-100 line-item">
+                            <td class="py-3 px-4"><input type="text" class="invoice-input" placeholder="Service description" onchange="calculate()"></td>
+                            <td class="py-3 px-3"><input type="number" class="invoice-input text-center" value="1" min="0" step="1" onchange="calculate()" onkeyup="calculate()"></td>
+                            <td class="py-3 px-3"><input type="number" class="invoice-input text-right" value="0" min="0" step="0.01" onchange="calculate()" onkeyup="calculate()"></td>
+                            <td class="py-3 px-4 text-right font-semibold text-slate-700 item-amount">0.00</td>
+                            <td class="py-3 px-2 no-print"><button onclick="removeRow(this)" class="text-red-400 hover:text-red-600 transition-colors"><i data-lucide="x-circle" class="w-4 h-4"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-Final rule:
+            <!-- Add Item Button -->
+            <div class="mb-8 no-print">
+                <button onclick="addRow()" class="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 font-semibold text-sm transition-colors">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i> Add Line Item
+                </button>
+            </div>
 
-• Always keep all homepage-visible posts, even if they do not meet any criteria above
-• After ensuring homepage posts are محفوظ, apply deletion rules
+            <!-- Totals -->
+            <div class="flex justify-end mb-8">
+                <div class="w-full sm:w-72 space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Subtotal</span>
+                        <span class="font-semibold" id="subtotal">0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm items-center">
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <span>VAT</span>
+                            <select id="vatRate" class="text-xs border border-slate-200 rounded px-1 py-0.5 cursor-pointer" onchange="calculate()">
+                                <option value="0">0%</option>
+                                <option value="5" selected>5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                            </select>
+                        </div>
+                        <span class="font-semibold" id="vatAmount">0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm items-center">
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <span>Discount</span>
+                            <input type="number" id="discountAmount" class="text-xs border border-slate-200 rounded px-2 py-0.5 w-20 text-right" value="0" min="0" step="0.01" onchange="calculate()" onkeyup="calculate()">
+                        </div>
+                        <span class="font-semibold text-red-500" id="discountDisplay">-0.00</span>
+                    </div>
+                    <div class="border-t-2 border-slate-900 pt-2 flex justify-between">
+                        <span class="font-bold text-slate-900">Total Due</span>
+                        <span class="font-extrabold text-lg text-slate-900" id="totalDue">0.00</span>
+                    </div>
+                </div>
+            </div>
 
-⸻
+            <!-- Notes & Payment Info -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-slate-100">
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-indigo-600 tracking-widest mb-2">Notes</h4>
+                    <textarea id="notes" class="invoice-input w-full text-sm text-slate-500 resize-none" rows="3" placeholder="Payment terms, bank details, or other notes..."></textarea>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-indigo-600 tracking-widest mb-2">Payment Method</h4>
+                    <textarea id="paymentInfo" class="invoice-input w-full text-sm text-slate-500 resize-none" rows="3" placeholder="Bank name, IBAN, account details..."></textarea>
+                </div>
+            </div>
 
-Goal:
+        </div>
 
-Remove low-quality auto-generated content while preserving high-value, branded, and visible posts that support SEO and credibility.
+        <!-- Invoice Footer -->
+        <div class="bg-slate-50 border-t border-slate-200 px-8 py-4 text-center text-xs text-slate-400">
+            <p>Afzal Innovative Business Solutions LLC-FZ &bull; Meydan Freezone, Dubai, UAE &bull; <a href="https://aibsuae.com" class="text-indigo-500 hover:underline">aibsuae.com</a></p>
+            <p class="mt-1">Thank you for your business!</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Set today's date and due date (30 days)
+        const today = new Date();
+        const due = new Date(today);
+        due.setDate(due.getDate() + 30);
+        document.getElementById('invoiceDate').value = today.toISOString().split('T')[0];
+        document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+
+        function addRow() {
+            const tbody = document.getElementById('lineItems');
+            const tr = document.createElement('tr');
+            tr.className = 'border-t border-slate-100 line-item';
+            tr.innerHTML = `
+                <td class="py-3 px-4"><input type="text" class="invoice-input" placeholder="Service description" onchange="calculate()"></td>
+                <td class="py-3 px-3"><input type="number" class="invoice-input text-center" value="1" min="0" step="1" onchange="calculate()" onkeyup="calculate()"></td>
+                <td class="py-3 px-3"><input type="number" class="invoice-input text-right" value="0" min="0" step="0.01" onchange="calculate()" onkeyup="calculate()"></td>
+                <td class="py-3 px-4 text-right font-semibold text-slate-700 item-amount">0.00</td>
+                <td class="py-3 px-2 no-print"><button onclick="removeRow(this)" class="text-red-400 hover:text-red-600 transition-colors"><i data-lucide="x-circle" class="w-4 h-4"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            lucide.createIcons();
+            calculate();
+        }
+
+        function removeRow(btn) {
+            const rows = document.querySelectorAll('.line-item');
+            if (rows.length > 1) {
+                btn.closest('tr').remove();
+                calculate();
+            }
+        }
+
+        function calculate() {
+            const rows = document.querySelectorAll('.line-item');
+            let subtotal = 0;
+            const cur = document.getElementById('currency').value;
+
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input[type="number"]');
+                const qty = parseFloat(inputs[0].value) || 0;
+                const rate = parseFloat(inputs[1].value) || 0;
+                const amount = qty * rate;
+                row.querySelector('.item-amount').textContent = amount.toFixed(2);
+                subtotal += amount;
+            });
+
+            const vatRate = parseFloat(document.getElementById('vatRate').value) || 0;
+            const vatAmount = subtotal * (vatRate / 100);
+            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
+            const total = subtotal + vatAmount - discount;
+
+            document.getElementById('subtotal').textContent = cur + ' ' + subtotal.toFixed(2);
+            document.getElementById('vatAmount').textContent = cur + ' ' + vatAmount.toFixed(2);
+            document.getElementById('discountDisplay').textContent = '-' + cur + ' ' + discount.toFixed(2);
+            document.getElementById('totalDue').textContent = cur + ' ' + total.toFixed(2);
+        }
+
+        function resetInvoice() {
+            if (confirm('Reset all invoice fields?')) {
+                document.getElementById('invoiceNumber').value = 'INV-001';
+                document.getElementById('clientName').value = '';
+                document.getElementById('clientAddress').value = '';
+                document.getElementById('clientEmail').value = '';
+                document.getElementById('clientPhone').value = '';
+                document.getElementById('clientTrn').value = '';
+                document.getElementById('trn').value = '';
+                document.getElementById('notes').value = '';
+                document.getElementById('paymentInfo').value = '';
+                document.getElementById('discountAmount').value = '0';
+                document.getElementById('vatRate').value = '5';
+
+                const tbody = document.getElementById('lineItems');
+                tbody.innerHTML = `
+                    <tr class="border-t border-slate-100 line-item">
+                        <td class="py-3 px-4"><input type="text" class="invoice-input" placeholder="Service description" onchange="calculate()"></td>
+                        <td class="py-3 px-3"><input type="number" class="invoice-input text-center" value="1" min="0" step="1" onchange="calculate()" onkeyup="calculate()"></td>
+                        <td class="py-3 px-3"><input type="number" class="invoice-input text-right" value="0" min="0" step="0.01" onchange="calculate()" onkeyup="calculate()"></td>
+                        <td class="py-3 px-4 text-right font-semibold text-slate-700 item-amount">0.00</td>
+                        <td class="py-3 px-2 no-print"><button onclick="removeRow(this)" class="text-red-400 hover:text-red-600 transition-colors"><i data-lucide="x-circle" class="w-4 h-4"></i></button></td>
+                    </tr>
+                `;
+                lucide.createIcons();
+                calculate();
+
+                const t = new Date();
+                const d = new Date(t);
+                d.setDate(d.getDate() + 30);
+                document.getElementById('invoiceDate').value = t.toISOString().split('T')[0];
+                document.getElementById('dueDate').value = d.toISOString().split('T')[0];
+            }
+        }
+
+        // Initial calculation
+        calculate();
+
+        // Recalculate when currency changes
+        document.getElementById('currency').addEventListener('change', calculate);
+    </script>
+</body>
+</html>
