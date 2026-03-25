@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Allow main pages
+Allow: /index.html
+Allow: /privacy.html
+Allow: /KreativeMinds-UAE.html
+
+# Allow invoice tool (important for functionality)
+Allow: /invoice/
+Allow: /invoice/index.html
+
+# Block unnecessary or sensitive paths (future-safe)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemap
+Sitemap: https://aibsuae.com/sitemap.xml
